@@ -167,6 +167,15 @@
         opacity: 0;
       }
     }
+    #finalBtn {
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
 
   </style>
 </head>
@@ -212,10 +221,24 @@
         <button id="finalBtn" style="margin-top:15px; background:#e91e63; color:white;">
           Ver algo más 💌
         </button>
-
-
       `;
+      
       typeWriter("Te amo mucho❤️");
+
+      function typeLine(elementId, text, speed, callback) {
+        const el = document.getElementById(elementId);
+        let i = 0;
+
+        const timer = setInterval(() => {
+          el.textContent += text.charAt(i);
+          i++;
+          if (i >= text.length) {
+            clearInterval(timer);
+            if (callback) callback();
+          }
+        }, speed);
+      }
+
       setTimeout(() => {
         const finalBtn = document.getElementById("finalBtn");
 
@@ -223,16 +246,22 @@
           card.innerHTML = `
             <div class="final-screen">
               <h1>💖 Siempre Vos 💖</h1>
-              <p>Gracias por existir en mi vida.</p>
-              <p>Gracias por elegirme todos los días.</p>
-              <p>Con vos todo es mejor ✨</p>
-              <p style="margin-top:20px; font-size:22px; color:#e91e63;">
-                Te amo hoy, mañana y siempre ❤️
-              </p>
+              <p id="finalText1"></p>
+              <p id="finalText2"></p>
+              <p id="finalText3"></p>
+              <p id="finalText4" style="margin-top:20px; font-size:22px; color:#e91e63;"></p>
             </div>
           `;
 
           launchBigHearts();
+
+          typeLine("finalText1", "Gracias por existir en mi vida.", 60, () => {
+            typeLine("finalText2", "Gracias por elegirme todos los días.", 60, () => {
+              typeLine("finalText3", "Con vos, todo es mejor 🌎✨", 60, () => {
+                typeLine("finalText4", "Te amo hoy, mañana y siempre ❤️", 80);
+              });
+            });
+          });
         });
       }, 800);
 
