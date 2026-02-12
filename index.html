@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -34,14 +33,8 @@
       100% { transform: scale(1); opacity: 1; }
     }
 
-    h1 {
-      color: #e91e63;
-    }
-
-    p {
-      font-size: 18px;
-      color: #444;
-    }
+    h1 { color: #e91e63; }
+    p { font-size: 18px; color: #444; }
 
     button {
       padding: 12px 25px;
@@ -53,20 +46,10 @@
       transition: transform 0.2s, background 0.3s;
     }
 
-    #yes {
-      background: #e91e63;
-      color: white;
-    }
+    #yes { background: #e91e63; color: white; }
+    #yes:hover { transform: scale(1.1); background: #d81b60; }
 
-    #yes:hover {
-      transform: scale(1.1);
-      background: #d81b60;
-    }
-
-    #no {
-      background: #ccc;
-      color: #333;
-    }
+    #no { background: #ccc; color: #333; }
 
     .hearts {
       position: fixed;
@@ -76,15 +59,10 @@
     }
 
     @keyframes float {
-      from {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-      }
-      to {
-        transform: translateY(-110vh) scale(1.5);
-        opacity: 0;
-      }
+      from { transform: translateY(0) scale(1); opacity: 1; }
+      to { transform: translateY(-110vh) scale(1.5); opacity: 0; }
     }
+
     #intro {
       position: fixed;
       inset: 0;
@@ -98,22 +76,10 @@
       animation-delay: 2.5s;
     }
 
-    #intro h1 {
-      color: #e91e63;
-      font-size: 32px;
-    }
-
-    #intro p {
-      font-size: 18px;
-      color: #444;
-    }
-
     @keyframes fadeOut {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
+      to { opacity: 0; visibility: hidden; }
     }
+
     .fotos {
       scroll-behavior: smooth;
       display: flex;
@@ -123,9 +89,7 @@
       padding-bottom: 10px;
     }
 
-    .fotos::-webkit-scrollbar {
-      display: none; /* Oculta la barrita */
-    }
+    .fotos::-webkit-scrollbar { display: none; }
 
     .fotos img {
       flex: 0 0 100%;
@@ -135,19 +99,15 @@
       scroll-snap-align: center;
       animation: pop 0.8s ease;
     }
+
     .final-screen {
       animation: fadeInFinal 1s ease forwards;
+      position: relative;
     }
 
     @keyframes fadeInFinal {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .big-hearts {
@@ -158,15 +118,10 @@
     }
 
     @keyframes floatBig {
-      from {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-      }
-      to {
-        transform: translateY(-120vh) scale(1.8);
-        opacity: 0;
-      }
+      from { transform: translateY(0) scale(1); opacity: 1; }
+      to { transform: translateY(-120vh) scale(1.8); opacity: 0; }
     }
+
     #finalBtn {
       animation: pulse 1.5s infinite;
     }
@@ -177,25 +132,6 @@
       100% { transform: scale(1); }
     }
 
-    .final-screen {
-      animation: fadeInFinal 1s ease forwards;
-      position: relative;
-    }
-
-    .final-screen::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at center, rgba(255,255,255,0.4), transparent 70%);
-      animation: glow 3s ease-in-out infinite alternate;
-      pointer-events: none;
-    }
-
-    @keyframes glow {
-      from { opacity: 0.4; }
-      to { opacity: 0.8; }
-    }
-
     .sparkle {
       position: fixed;
       color: white;
@@ -204,177 +140,170 @@
     }
 
     @keyframes sparkleAnim {
-      from {
-        transform: translateY(0) scale(0.5);
-        opacity: 1;
-      }
-      to {
-        transform: translateY(-60px) scale(1.2);
-        opacity: 0;
-      }
+      from { transform: translateY(0) scale(0.5); opacity: 1; }
+      to { transform: translateY(-60px) scale(1.2); opacity: 0; }
     }
-
   </style>
 </head>
 <body>
-  <audio id="music" src="musica.mp3"></audio>
-  <div class="card" id="card">
-    <h1>Flor 💖</h1>
-    <p>Feliz San Valentín❤️.</p>
-    <p>Cuando vuelvas, ¿Querés pasarlo conmigo y hacer nuestro propio San Valentín? 🥹💘</p>
-    <button id="yes">Sí 💕</button>
-    <button id="no">No 😔</button>
-  </div>
 
-  <div id="intro">
-    <h1>💖 Para mi Gaga 💖</h1>
-    <p>Cargando algo especial para vos...</p>
-  </div>
+<audio id="music" src="musica.mp3"></audio>
 
-  <script>
-    const yesBtn = document.getElementById("yes");
-    const noBtn = document.getElementById("no");
-    const card = document.getElementById("card");
-    const music = document.getElementById("music");
+<div class="card" id="card">
+  <h1>Flor 💖</h1>
+  <p>Feliz San Valentín❤️.</p>
+  <p>Cuando vuelvas, ¿Querés pasarlo conmigo y hacer nuestro propio San Valentín? 🥹💘</p>
+  <button id="yes">Sí 💕</button>
+  <button id="no">No 😔</button>
+</div>
 
-    yesBtn.addEventListener("click", () => {
-      music.volume = 0.4;
-    music.loop = true;
-      music.play();
+<div id="intro">
+  <h1>💖 Para mi Gaga 💖</h1>
+  <p>Cargando algo especial para vos...</p>
+</div>
+
+<script>
+const yesBtn = document.getElementById("yes");
+const noBtn = document.getElementById("no");
+const card = document.getElementById("card");
+const music = document.getElementById("music");
+
+yesBtn.addEventListener("click", () => {
+
+  music.volume = 0.4;
+  music.loop = true;
+  music.play();
+
+  card.innerHTML = `
+    <h1>💖 Gracias, Mi Amor 💖</h1>
+    <p style="font-size:14px; color:#888;">👉 Deslizá para ver nuestras fotos 💞</p>
+    <div class="fotos">
+      <img src="patinando.jpg">
+      <img src="espejo.jpg">
+      <img src="selfie.jpg">
+      <img src="paraguas.jpg">
+      <img src="patinando2.jpg">
+      <img src="patinando3.jpg">
+    </div>
+    <p>Prometo hacerte reír, cuidarte y amarte todos los días.</p>
+    <p>Sos mi persona favorita en el mundo 🌎✨</p>
+    <p id="teAmo"></p>
+    <button id="finalBtn" style="margin-top:15px; background:#e91e63; color:white;">
+      Ver algo más 💌
+    </button>
+  `;
+
+  typeWriter("Te amo mucho❤️");
+  launchHearts();
+
+  setTimeout(() => {
+    const finalBtn = document.getElementById("finalBtn");
+
+    finalBtn.addEventListener("click", () => {
+
+      if (navigator.vibrate) {
+        navigator.vibrate([200, 100, 200]);
+      }
+
       card.innerHTML = `
-        <h1>💖 Gracias, Mi Amor 💖</h1>
-        <p style="font-size:14px; color:#888;">👉 Deslizá para ver nuestras fotos 💞</p>
-        <div class="fotos">
-          <img src="patinando.jpg" alt="Nosotros patinando">
-          <img src="espejo.jpg" alt="Nosotros en el espejo">
-          <img src="selfie.jpg" alt="Nuestro selfie">
-          <img src="paraguas.jpg" alt="Debajo de paraguas">
-          <img src="patinando2.jpg" alt="Nosotros patinando 2">
-          <img src="patinando3.jpg" alt="Nosotros patinando 3">
+        <div class="final-screen">
+          <h1>💖 Siempre Vos 💖</h1>
+          <p id="finalText1"></p>
+          <p id="finalText2"></p>
+          <p id="finalText3"></p>
+          <p id="finalText4" style="margin-top:20px; font-size:22px; color:#e91e63;"></p>
         </div>
-        <p>Prometo hacerte reír, cuidarte y amarte todos los días.</p>
-        <p>Sos mi persona favorita en el mundo 🌎✨</p>
-        <p id="teAmo"></p>
-        <button id="finalBtn" style="margin-top:15px; background:#e91e63; color:white;">
-          Ver algo más 💌
-        </button>
       `;
 
-      typeWriter("Te amo mucho❤️");
+      fadeMusic();
+      launchBigHearts();
+      launchSparkles();
 
-      function launchSparkles() {
-        setInterval(() => {
-          const spark = document.createElement("div");
-          spark.className = "sparkle";
-          spark.style.left = Math.random() * 100 + "vw";
-          spark.style.top = Math.random() * 100 + "vh";
-          spark.textContent = "✨";
-          document.body.appendChild(spark);
-
-          setTimeout(() => {
-            spark.remove();
-          }, 2000);
-        }, 300);
-      }
-
-      function typeLine(elementId, text, speed, callback) {
-        const el = document.getElementById(elementId);
-        let i = 0;
-
-        const timer = setInterval(() => {
-          el.textContent += text.charAt(i);
-          i++;
-          if (i >= text.length) {
-            clearInterval(timer);
-            if (callback) callback();
-          }
-        }, speed);
-      }
-
-      setTimeout(() => {
-        const finalBtn = document.getElementById("finalBtn");
-
-        finalBtn.addEventListener("click", () => {
-          card.innerHTML = `
-            <div class="final-screen">
-              <h1>💖 Siempre Vos 💖</h1>
-              <p id="finalText1"></p>
-              <p id="finalText2"></p>
-              <p id="finalText3"></p>
-              <p id="finalText4" style="margin-top:20px; font-size:22px; color:#e91e63;"></p>
-            </div>
-          `;
-
-          let fadeAudio = setInterval(() => {
-            if (music.volume > 0.15) {
-              music.volume -= 0.02;
-            } else {
-              clearInterval(fadeAudio);
-            }
-          }, 200);
-
-          launchBigHearts();
-          launchSparkles();
-
-          typeLine("finalText1", "Gracias por existir en mi vida.", 45, () => {
-            typeLine("finalText2", "Gracias por elegirme todos los días.", 45, () => {
-              typeLine("finalText3", "Con vos todo es mejor ✨", 45, () => {
-                typeLine("finalText4", "Te amo hoy, mañana y siempre ❤️", 65);
-              });
-            });
+      typeLine("finalText1", "Gracias por existir en mi vida.", 45, () => {
+        typeLine("finalText2", "Gracias por elegirme todos los días.", 45, () => {
+          typeLine("finalText3", "Con vos todo es mejor ✨", 45, () => {
+            typeLine("finalText4", "Te amo hoy, mañana y siempre ❤️", 65);
           });
         });
-      }, 800);
-      
-      setTimeout(() => {
-        typeLine("finalText4", "\nSiempre nosotros 💞", 80);
-      }, 2000);
+      });
 
-      launchHearts();
     });
-    function launchBigHearts() {
-      setInterval(() => {
-        const heart = document.createElement("div");
-        heart.className = "big-hearts";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.textContent = "💖";
-        document.body.appendChild(heart);
 
-        setTimeout(() => {
-          heart.remove();
-        }, 6000);
-      }, 500);
+  }, 500);
+});
+
+noBtn.addEventListener("click", () => {
+  alert("Esa opción no está disponible 😮🐭");
+});
+
+function typeWriter(text) {
+  const el = document.getElementById("teAmo");
+  let i = 0;
+  const speed = 100;
+  const timer = setInterval(() => {
+    el.textContent += text.charAt(i);
+    i++;
+    if (i >= text.length) clearInterval(timer);
+  }, speed);
 }
 
-    noBtn.addEventListener("click", () => {
-      alert("Esa opción no está disponible 😮🐭");
-    });
-
-    function launchHearts() {
-      setInterval(() => {
-        const heart = document.createElement("div");
-        heart.className = "hearts";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.textContent = "💖";
-        document.body.appendChild(heart);
-
-        setTimeout(() => {
-          heart.remove();
-        }, 5000);
-      }, 300);
+function typeLine(id, text, speed, callback) {
+  const el = document.getElementById(id);
+  let i = 0;
+  const timer = setInterval(() => {
+    el.textContent += text.charAt(i);
+    i++;
+    if (i >= text.length) {
+      clearInterval(timer);
+      if (callback) callback();
     }
-    function typeWriter(text) {
-      const el = document.getElementById("teAmo");
-      let i = 0;
-      const speed = 100; // ms por letra
+  }, speed);
+}
 
-      const timer = setInterval(() => {
-        el.textContent += text.charAt(i);
-        i++;
-        if (i >= text.length) clearInterval(timer);
-      }, speed);
+function launchHearts() {
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "hearts";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.textContent = "💖";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+  }, 300);
+}
+
+function launchBigHearts() {
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "big-hearts";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.textContent = "💖";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }, 500);
+}
+
+function launchSparkles() {
+  setInterval(() => {
+    const spark = document.createElement("div");
+    spark.className = "sparkle";
+    spark.style.left = Math.random() * 100 + "vw";
+    spark.style.top = Math.random() * 100 + "vh";
+    spark.textContent = "✨";
+    document.body.appendChild(spark);
+    setTimeout(() => spark.remove(), 2000);
+  }, 300);
+}
+
+function fadeMusic() {
+  let fadeAudio = setInterval(() => {
+    if (music.volume > 0.1) {
+      music.volume -= 0.02;
+    } else {
+      clearInterval(fadeAudio);
     }
-  </script>
+  }, 200);
+}
+</script>
 
 </body>
 </html>
