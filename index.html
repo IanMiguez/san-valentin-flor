@@ -84,6 +84,48 @@
         opacity: 0;
       }
     }
+    #intro {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      animation: fadeOut 1s ease forwards;
+      animation-delay: 2.5s;
+    }
+
+    #intro h1 {
+      color: #e91e63;
+      font-size: 32px;
+    }
+
+    #intro p {
+      font-size: 18px;
+      color: #444;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+    .fotos {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    .fotos img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      animation: pop 0.8s ease;
+    }
   </style>
 </head>
 <body>
@@ -96,6 +138,11 @@
     <button id="no">No 😔</button>
   </div>
 
+  <div id="intro">
+    <h1>💖 Para Flor 💖</h1>
+    <p>Cargando algo especial para vos...</p>
+  </div>
+
   <script>
     const yesBtn = document.getElementById("yes");
     const noBtn = document.getElementById("no");
@@ -103,13 +150,21 @@
     const music = document.getElementById("music");
 
     yesBtn.addEventListener("click", () => {
+      music.volume = 0.4;
+    music.loop = true;
       music.play();
       card.innerHTML = `
         <h1>💖 Gracias, Mi Amor 💖</h1>
+        <div class="fotos">
+          <img src="patinando.jpg" alt="Nosotros patinando">
+          <img src="espejo.jpg" alt="Nosotros en el espejo">
+          <img src="selfie.jpg" alt="Nuestro selfie">
+        </div>
         <p>Prometo hacerte reír, cuidarte y quererte todos los días.</p>
         <p>Sos mi persona favorita en el mundo 🌎✨</p>
-        <p>Te amo 🥰</p>
+        <p id="teAmo"></p>
       `;
+      typeWriter("Te amo 🥰");
       launchHearts();
     });
 
@@ -129,6 +184,17 @@
           heart.remove();
         }, 5000);
       }, 300);
+    }
+    function typeWriter(text) {
+      const el = document.getElementById("teAmo");
+      let i = 0;
+      const speed = 100; // ms por letra
+
+      const timer = setInterval(() => {
+        el.textContent += text.charAt(i);
+        i++;
+        if (i >= text.length) clearInterval(timer);
+      }, speed);
     }
   </script>
 
