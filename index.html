@@ -177,6 +177,43 @@
       100% { transform: scale(1); }
     }
 
+    .final-screen {
+      animation: fadeInFinal 1s ease forwards;
+      position: relative;
+    }
+
+    .final-screen::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.4), transparent 70%);
+      animation: glow 3s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes glow {
+      from { opacity: 0.4; }
+      to { opacity: 0.8; }
+    }
+
+    .sparkle {
+      position: fixed;
+      color: white;
+      font-size: 14px;
+      animation: sparkleAnim 2s linear forwards;
+    }
+
+    @keyframes sparkleAnim {
+      from {
+        transform: translateY(0) scale(0.5);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-60px) scale(1.2);
+        opacity: 0;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -225,6 +262,21 @@
 
       typeWriter("Te amo mucho❤️");
 
+      function launchSparkles() {
+        setInterval(() => {
+          const spark = document.createElement("div");
+          spark.className = "sparkle";
+          spark.style.left = Math.random() * 100 + "vw";
+          spark.style.top = Math.random() * 100 + "vh";
+          spark.textContent = "✨";
+          document.body.appendChild(spark);
+
+          setTimeout(() => {
+            spark.remove();
+          }, 2000);
+        }, 300);
+      }
+
       function typeLine(elementId, text, speed, callback) {
         const el = document.getElementById(elementId);
         let i = 0;
@@ -253,7 +305,16 @@
             </div>
           `;
 
+          let fadeAudio = setInterval(() => {
+            if (music.volume > 0.15) {
+              music.volume -= 0.02;
+            } else {
+              clearInterval(fadeAudio);
+            }
+          }, 200);
+
           launchBigHearts();
+          launchSparkles();
 
           typeLine("finalText1", "Gracias por existir en mi vida.", 45, () => {
             typeLine("finalText2", "Gracias por elegirme todos los días.", 45, () => {
@@ -264,6 +325,10 @@
           });
         });
       }, 800);
+      
+      setTimeout(() => {
+        typeLine("finalText4", "\nSiempre nosotros 💞", 80);
+      }, 2000);
 
       launchHearts();
     });
