@@ -13,7 +13,7 @@
       justify-content: center;
       align-items: center;
       font-family: 'Segoe UI', sans-serif;
-      overflow: hidden;
+      overflow-y: auto;
       padding: 20px;
     }
 
@@ -115,17 +115,25 @@
     }
     .fotos {
       display: flex;
-      flex-direction: column;
       gap: 15px;
-      margin: 15px 0;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 10px;
+    }
+
+    .fotos::-webkit-scrollbar {
+      display: none; /* Oculta la barrita */
     }
 
     .fotos img {
-      width: 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
       border-radius: 15px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      scroll-snap-align: center;
       animation: pop 0.8s ease;
     }
+
   </style>
 </head>
 <body>
