@@ -177,8 +177,25 @@
         <p>Prometo hacerte reír, cuidarte y quererte todos los días.</p>
         <p>Sos mi persona favorita en el mundo 🌎✨</p>
         <p id="teAmo"></p>
+        <button id="finalBtn" style="margin-top:15px; background:#e91e63; color:white;">
+          Ver algo más 💌
+        </button>
+
       `;
       typeWriter("Te amo mucho❤️");
+      setTimeout(() => {
+        const finalBtn = document.getElementById("finalBtn");
+        finalBtn.addEventListener("click", () => {
+          card.innerHTML = `
+            <h1>💖 Siempre Vos 💖</h1>
+            <p>Gracias por existir en mi vida.</p>
+            <p>Gracias por elegirme todos los días.</p>
+            <p>Con vos, todo es mejor 🌎✨</p>
+            <p style="margin-top:20px; font-size:20px;">Te amo hoy, mañana y siempre ❤️</p>
+          `;
+        });
+      }, 800);
+
       launchHearts();
     });
 
